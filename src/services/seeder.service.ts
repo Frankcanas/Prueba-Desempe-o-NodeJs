@@ -41,7 +41,7 @@ export class SeederService {
             existing = await this.warehouseRepo.findById(wh.id, transaction);
           }
           if (!existing && wh.name) {
-            existing = await this.warehouseRepo.findByName(wh.name);
+            existing = await this.warehouseRepo.findByName(wh.name, undefined, transaction);
           }
 
           if (!existing) {
@@ -90,7 +90,7 @@ export class SeederService {
       // 3. Población de Clínicas (Clinics)
       if (data.clinics && Array.isArray(data.clinics)) {
         for (const c of data.clinics) {
-          const existingClinic = await this.clinicRepo.findByNit(c.nit);
+          const existingClinic = await this.clinicRepo.findByNit(c.nit, undefined, transaction);
           if (!existingClinic) {
             await this.clinicRepo.create(
               {
@@ -112,7 +112,7 @@ export class SeederService {
       // 4. Población de Medicamentos (Medicines)
       if (data.medicines && Array.isArray(data.medicines)) {
         for (const m of data.medicines) {
-          const existingMedicine = await this.medicineRepo.findByCode(m.code);
+          const existingMedicine = await this.medicineRepo.findByCode(m.code, undefined, transaction);
           if (!existingMedicine) {
             // Resolver almacén asociado
             let resolvedWarehouseId = m.warehouseId;

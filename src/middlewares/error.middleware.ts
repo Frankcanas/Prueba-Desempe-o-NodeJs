@@ -6,7 +6,7 @@ export interface CustomError extends Error {
 }
 
 /**
- * Middleware global para la captura y formateo de errores
+ * Middleware global para la captura y formateo estandarizado de errores
  */
 export const errorHandler = (
   err: CustomError,
@@ -17,10 +17,16 @@ export const errorHandler = (
   let statusCode = err.statusCode || 500;
   let message = err.message || 'Error interno del servidor.';
 
-  // Manejo de errores de validación de Sequelize
+  // Manejo de errores de validación y restricciones de Sequelize
   if (err.name === 'SequelizeValidationError' || err.name === 'SequelizeUniqueConstraintError') {
     statusCode = 400;
     message = err.errors && err.errors.length > 0 ? err.errors[0].message : 'Error de validación en la base de datos.';
+  }
+
+  // Manejo de errores de subida de archivos de Multer
+  if (err.name === 'MulterError') {
+    statusCode = 400;
+    message = `Error en el archivo cargado: ${err.message}`;
   }
 
   // Manejo de errores de sintaxis JSON

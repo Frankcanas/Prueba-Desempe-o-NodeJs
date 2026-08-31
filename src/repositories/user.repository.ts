@@ -1,5 +1,5 @@
 import { Transaction } from 'sequelize';
-import { User, UserInput } from '../models/user.model';
+import { User, UserInput } from '../models';
 
 export class UserRepository {
   /**
@@ -46,4 +46,3 @@ export class UserRepository {
 }
 
 export const userRepository = new UserRepository();
-

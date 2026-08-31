@@ -1,0 +1,127 @@
+{
+  "warehouses": [
+    {
+      "name": "Almacén Central Norte",
+      "location": "Carrera 45 # 100-20, Medellín",
+      "capacity": 50000
+    },
+    {
+      "name": "Almacén Suministros Sur",
+      "location": "Calle 10 Sur # 50-30, Envigado",
+      "capacity": 35000
+    },
+    {
+      "name": "Almacén Hospitalario Oriente",
+      "location": "Autopista Medellín-Bogotá Km 25, Rionegro",
+      "capacity": 20000
+    }
+  ],
+  "users": [
+    {
+      "name": "Carlos Rodríguez",
+      "email": "carlos.admin@riwimedicare.com",
+      "password": "AdminPassword2026*",
+      "role": "Administrador"
+    },
+    {
+      "name": "María Fernanda Gómez",
+      "email": "maria.gestor@riwimedicare.com",
+      "password": "GestorPassword2026*",
+      "role": "Gestor de Solicitudes"
+    },
+    {
+      "name": "Andrés Felipe Ruiz",
+      "email": "andres.gestor@riwimedicare.com",
+      "password": "GestorPassword2026*",
+      "role": "Gestor de Solicitudes"
+    }
+  ],
+  "clinics": [
+    {
+      "name": "Clínica Las Américas",
+      "nit": "900123456-1",
+      "address": "Diagonal 75B # 2A-80, Medellín",
+      "phone": "+57 604 3421010",
+      "managerName": "Dra. Patricia Mejía"
+    },
+    {
+      "name": "Hospital Pablo Tobón Uribe",
+      "nit": "890900456-2",
+      "address": "Calle 78B # 69-240, Medellín",
+      "phone": "+57 604 4459000",
+      "managerName": "Dr. Antonio Restrepo"
+    },
+    {
+      "name": "Clínica Medellín El Poblado",
+      "nit": "890980123-3",
+      "address": "Calle 7 # 39-290, Medellín",
+      "phone": "+57 604 3122000",
+      "managerName": "Dr. Sergio Arango"
+    },
+    {
+      "name": "Clínica Cardio VID",
+      "nit": "890905789-4",
+      "address": "Calle 78B # 75-21, Medellín",
+      "phone": "+57 604 3227090",
+      "managerName": "Dra. Carolina Morales"
+    }
+  ],
+  "medicines": [
+    {
+      "name": "Acetaminofén 500mg (Caja x 100)",
+      "code": "MED-ACE-500",
+      "description": "Analgésico y antipirético de primera línea para dolor leve y moderado.",
+      "unitPrice": 12500.00,
+      "stock": 1500,
+      "warehouseName": "Almacén Central Norte"
+    },
+    {
+      "name": "Amoxicilina + Ácido Clavulánico 875/125mg",
+      "code": "MED-AMX-875",
+      "description": "Antibiótico bactericida de amplio espectro.",
+      "unitPrice": 38000.00,
+      "stock": 800,
+      "warehouseName": "Almacén Central Norte"
+    },
+    {
+      "name": "Ibuprofeno 400mg (Caja x 30)",
+      "code": "MED-IBU-400",
+      "description": "Antiinflamatorio no esteroideo (AINE).",
+      "unitPrice": 18200.00,
+      "stock": 1200,
+      "warehouseName": "Almacén Suministros Sur"
+    },
+    {
+      "name": "Insulina Glargina 100 UI/ml (Pluma 3ml)",
+      "code": "MED-INS-GLA",
+      "description": "Análogo de insulina humana de acción prolongada.",
+      "unitPrice": 85000.00,
+      "stock": 450,
+      "warehouseName": "Almacén Hospitalario Oriente"
+    },
+    {
+      "name": "Losartán Potásico 50mg (Caja x 30)",
+      "code": "MED-LOS-050",
+      "description": "Antihipertensivo antagonista de receptores de angiotensina II.",
+      "unitPrice": 15400.00,
+      "stock": 2000,
+      "warehouseName": "Almacén Central Norte"
+    },
+    {
+      "name": "Omeprazol 20mg Cápsulas (Caja x 30)",
+      "code": "MED-OME-020",
+      "description": "Inhibidor de la bomba de protones para úlcera gástrica y reflujo.",
+      "unitPrice": 14000.00,
+      "stock": 950,
+      "warehouseName": "Almacén Suministros Sur"
+    },
+    {
+      "name": "Suero Fisiológico 0.9% 500ml Bolsa",
+      "code": "INS-SUE-500",
+      "description": "Solución inyectable para hidratación y reposición electrolítica.",
+      "unitPrice": 6200.00,
+      "stock": 3000,
+      "warehouseName": "Almacén Hospitalario Oriente"
+    }
+  ]
+}

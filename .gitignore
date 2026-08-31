@@ -14,9 +14,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Uploads directory contents except .gitkeep
-uploads/*
-!uploads/.gitkeep
+# Test Coverage
+coverage/
 
 # IDE and OS files
 .DS_Store

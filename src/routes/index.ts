@@ -4,6 +4,7 @@ import seederRoutes from './seeder.routes';
 import clinicRoutes from './clinic.routes';
 import warehouseRoutes from './warehouse.routes';
 import medicineRoutes from './medicine.routes';
+import supplyRequestRoutes from './supply-request.routes';
 
 const router = Router();
 
@@ -19,5 +20,8 @@ router.use('/clinics', clinicRoutes);
 // Rutas de Almacenes y Medicamentos (US 05)
 router.use('/warehouses', warehouseRoutes);
 router.use('/medicines', medicineRoutes);
+
+// Rutas de Solicitudes de Abastecimiento (US 06, US 07, US 08)
+router.use('/supply-requests', supplyRequestRoutes);
 
 export default router;

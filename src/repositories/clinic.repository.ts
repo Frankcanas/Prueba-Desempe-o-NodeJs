@@ -1,4 +1,4 @@
-import { Clinic, ClinicInput } from '../models/clinic.model';
+import { Clinic, ClinicInput } from '../models';
 import { Transaction, Op } from 'sequelize';
 
 export class ClinicRepository {

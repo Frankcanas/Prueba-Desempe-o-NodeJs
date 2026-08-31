@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USER:-nodejs}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-123456}
-      POSTGRES_DB: ${DB_NAME:-postgres}
+      POSTGRES_DB: ${DB_NAME:-riwimedicare_db}
     ports:
       - "${DB_PORT:-5432}:5432"
     volumes:
@@ -21,7 +21,7 @@ services:
           cpus: '${DB_CPU_LIMIT:-2}'
           memory: ${DB_MEM_LIMIT:-512M}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-nodejs} -d ${DB_NAME:-postgres}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-nodejs} -d ${DB_NAME:-riwimedicare_db}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -41,7 +41,7 @@ services:
       DB_PORT: 5432
       DB_USER: ${DB_USER:-nodejs}
       DB_PASSWORD: ${DB_PASSWORD:-123456}
-      DB_NAME: ${DB_NAME:-postgres}
+      DB_NAME: ${DB_NAME:-riwimedicare_db}
       JWT_SECRET: ${JWT_SECRET:-secret_key}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-30m}
     depends_on:
