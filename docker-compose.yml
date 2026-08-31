@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: ${DB_CONTAINER_NAME:-riwimedicare-db}
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-nodejs}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-123456}
+      POSTGRES_DB: ${DB_NAME:-postgres}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - riwimedicare-network
+    deploy:
+      resources:
+        limits:
+          cpus: '${DB_CPU_LIMIT:-2}'
+          memory: ${DB_MEM_LIMIT:-512M}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-nodejs} -d ${DB_NAME:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${APP_CONTAINER_NAME:-riwimedicare-backend}
+    restart: always
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: ${PORT:-3000}
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-nodejs}
+      DB_PASSWORD: ${DB_PASSWORD:-123456}
+      DB_NAME: ${DB_NAME:-postgres}
+      JWT_SECRET: ${JWT_SECRET:-secret_key}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-30m}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - riwimedicare-network
+    deploy:
+      resources:
+        limits:
+          cpus: '${APP_CPU_LIMIT:-2}'
+          memory: ${APP_MEM_LIMIT:-512M}
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  riwimedicare-network:
+    driver: bridge
