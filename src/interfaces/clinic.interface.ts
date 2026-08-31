@@ -20,8 +20,23 @@ export interface ICreateClinicDTO {
 
 export interface IUpdateClinicDTO {
   name?: string;
+  nit?: string;
   address?: string;
   phone?: string;
   managerName?: string;
   isActive?: boolean;
+}
+
+export interface IClinicPaginationQuery {
+  page?: number;
+  limit?: number;
+  all?: boolean;
+}
+
+export interface IPaginatedClinicsResponse {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  clinics: IClinicAttributes[];
 }

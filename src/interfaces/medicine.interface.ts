@@ -1,3 +1,5 @@
+import { IWarehouseAttributes } from './warehouse.interface';
+
 export interface IMedicineAttributes {
   id?: string;
   name: string;
@@ -6,6 +8,7 @@ export interface IMedicineAttributes {
   unitPrice: number;
   stock: number;
   warehouseId: string;
+  warehouse?: IWarehouseAttributes;
   isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
@@ -28,4 +31,19 @@ export interface IUpdateMedicineDTO {
   stock?: number;
   warehouseId?: string;
   isActive?: boolean;
+}
+
+export interface IMedicinePaginationQuery {
+  page?: number;
+  limit?: number;
+  warehouseId?: string;
+  all?: boolean;
+}
+
+export interface IPaginatedMedicinesResponse {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  medicines: IMedicineAttributes[];
 }

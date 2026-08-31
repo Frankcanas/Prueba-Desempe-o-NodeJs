@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
+import './models'; // Asegura la inicialización y registro de relaciones entre modelos
 import app from './app';
 import { connectDB } from './config/database';
 

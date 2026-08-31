@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import authRoutes from './auth.routes';
 import seederRoutes from './seeder.routes';
+import clinicRoutes from './clinic.routes';
+import warehouseRoutes from './warehouse.routes';
+import medicineRoutes from './medicine.routes';
 
 const router = Router();
 
@@ -10,5 +13,11 @@ router.use('/auth', authRoutes);
 // Rutas de Carga Inicial / Seeders (US 03)
 router.use('/seeders', seederRoutes);
 
-export default router;
+// Rutas de Clínicas (US 04)
+router.use('/clinics', clinicRoutes);
 
+// Rutas de Almacenes y Medicamentos (US 05)
+router.use('/warehouses', warehouseRoutes);
+router.use('/medicines', medicineRoutes);
+
+export default router;

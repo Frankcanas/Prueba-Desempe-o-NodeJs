@@ -1,35 +1,45 @@
-import { User } from './user.model';
-import { Clinic } from './clinic.model';
-import { Warehouse } from './warehouse.model';
-import { Medicine } from './medicine.model';
-import { SupplyRequest } from './supply-request.model';
+import { User, UserInput, UserOutput } from './user.model';
+import { Clinic, ClinicInput, ClinicOutput } from './clinic.model';
+import { Warehouse, WarehouseInput, WarehouseOutput } from './warehouse.model';
+import { Medicine, MedicineInput, MedicineOutput } from './medicine.model';
+import { SupplyRequest, SupplyRequestInput, SupplyRequestOutput } from './supply-request.model';
 
 // --- Asociaciones de Modelos (Sequelize Relationships) ---
 
 // Relación Almacén <-> Medicamentos (1 a N)
-Warehouse.hasMany(Medicine, { foreignKey: 'warehouse_id', as: 'medicines' });
-Medicine.belongsTo(Warehouse, { foreignKey: 'warehouse_id', as: 'warehouse' });
+Warehouse.hasMany(Medicine, { foreignKey: 'warehouseId', as: 'medicines' });
+Medicine.belongsTo(Warehouse, { foreignKey: 'warehouseId', as: 'warehouse' });
 
 // Relación Clínica <-> Solicitudes de Abastecimiento (1 a N)
-Clinic.hasMany(SupplyRequest, { foreignKey: 'clinic_id', as: 'supplyRequests' });
-SupplyRequest.belongsTo(Clinic, { foreignKey: 'clinic_id', as: 'clinic' });
+Clinic.hasMany(SupplyRequest, { foreignKey: 'clinicId', as: 'supplyRequests' });
+SupplyRequest.belongsTo(Clinic, { foreignKey: 'clinicId', as: 'clinic' });
 
 // Relación Almacén <-> Solicitudes de Abastecimiento (1 a N)
-Warehouse.hasMany(SupplyRequest, { foreignKey: 'warehouse_id', as: 'supplyRequests' });
-SupplyRequest.belongsTo(Warehouse, { foreignKey: 'warehouse_id', as: 'warehouse' });
+Warehouse.hasMany(SupplyRequest, { foreignKey: 'warehouseId', as: 'supplyRequests' });
+SupplyRequest.belongsTo(Warehouse, { foreignKey: 'warehouseId', as: 'warehouse' });
 
 // Relación Medicamento <-> Solicitudes de Abastecimiento (1 a N)
-Medicine.hasMany(SupplyRequest, { foreignKey: 'medicine_id', as: 'supplyRequests' });
-SupplyRequest.belongsTo(Medicine, { foreignKey: 'medicine_id', as: 'medicine' });
+Medicine.hasMany(SupplyRequest, { foreignKey: 'medicineId', as: 'supplyRequests' });
+SupplyRequest.belongsTo(Medicine, { foreignKey: 'medicineId', as: 'medicine' });
 
 // Relación Usuario <-> Solicitudes de Abastecimiento (1 a N)
-User.hasMany(SupplyRequest, { foreignKey: 'requested_by_id', as: 'supplyRequests' });
-SupplyRequest.belongsTo(User, { foreignKey: 'requested_by_id', as: 'requester' });
+User.hasMany(SupplyRequest, { foreignKey: 'requestedById', as: 'supplyRequests' });
+SupplyRequest.belongsTo(User, { foreignKey: 'requestedById', as: 'requester' });
 
 export {
   User,
+  UserInput,
+  UserOutput,
   Clinic,
+  ClinicInput,
+  ClinicOutput,
   Warehouse,
+  WarehouseInput,
+  WarehouseOutput,
   Medicine,
+  MedicineInput,
+  MedicineOutput,
   SupplyRequest,
+  SupplyRequestInput,
+  SupplyRequestOutput,
 };
